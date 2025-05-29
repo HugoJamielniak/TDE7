@@ -1,0 +1,57 @@
+itens = [[1,3.75,2],
+          [2,3.67,5],
+          [3,9.96,1],
+          [4,1.25,100],
+          [5,13.99,2],
+]
+
+produtos = ('Cola-cola','Pespi','Monster','Café','Redbull')
+
+
+
+def escolha_produto():
+    indice = 0
+    print('-' * 20)
+    print('lista de produtos:')
+    for produto in produtos:
+        print(f'{indice} - {produto} R${itens[indice][1]}')
+        indice += 1
+    print('-=' * 30)
+    escolha = int(input('Escolha uma bebida?'))
+    return escolha
+escolha = escolha_produto()
+
+def verificar_produto():
+    indice = escolha
+    if 0 <= indice <= len(produtos):
+        print(f'produto disponivel! ha {itens[indice][2]} unidades')
+        print('-' * 20)
+        disponivel = itens[indice][2] - 1
+        return disponivel
+    else:
+        print('produto indisponivel')
+estoque = verificar_produto()
+
+def pagamento():
+    indice = escolha
+    opçao = int(input('deseja comprar? 1 - sim 2 - não'))
+    if opçao == 1:
+        print(f'valor total: R${itens[indice][1]}')
+        print('-' * 20)
+        pagar = float(input('insira o pagamento:'))
+        return pagar
+    if opçao == 2:
+        print('operaçao encerrada!')
+pagar = pagamento()
+
+def verificar_pagamento():
+    indice = escolha
+    pagamento = pagar
+    if  pagamento >= itens[indice][1] :
+        print('retirando o produto...')
+        print('-' * 20)
+        print(f'pegue sua {produtos[indice]}')
+        return print()
+    else:
+        print('dinheiro insuficiente! ')
+suficiente = verificar_pagamento()
